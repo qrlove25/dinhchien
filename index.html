@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dinh chien | Tech & Workspace Essentials - Curated Gear & Accessories</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        amazon: {
+                            DEFAULT: '#FF9900',
+                            hover: '#e68a00',
+                            dark: '#232F3E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-600 selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. HEADER & NAVIGATION (Clean, direct to products, brand: dinh chien) -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-600 to-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-layer-group text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900">dinh</span>
+                        <span class="text-xl font-extrabold text-brand-600">chien</span>
+                    </div>
+                    <p class="text-[11px] font-medium text-slate-500 uppercase tracking-wider">Tech & Workspace</p>
+                </div>
+            </a>
+
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-md mx-6">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search keyboards, mice, USB-C hubs, monitor lights..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-100 hover:bg-slate-200/60 focus:bg-white text-sm rounded-xl border border-transparent focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all"
+                    >
+                </div>
+            </div>
+
+            <!-- Nav Actions -->
+            <div class="flex items-center gap-3">
+                <span id="cloudSyncBadge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Cloud Synced
+                </span>
+                <!-- Password-protected Admin Button -->
+                <button 
+                    onclick="handleAdminAccess()" 
+                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-brand-600 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm"
+                    title="Admin Login to Add or Manage Products"
+                >
+                    <i id="adminLockIcon" class="fa-solid fa-lock text-amber-400"></i>
+                    <span id="adminBtnText">Add / Manage Products</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar (Mobile) -->
+        <div class="md:hidden px-4 pb-3">
+            <div class="relative w-full">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input 
+                    type="text" 
+                    id="searchInputMobile"
+                    placeholder="Search tech & workspace gear..." 
+                    class="w-full pl-10 pr-4 py-2 bg-slate-100 focus:bg-white text-sm rounded-xl border border-slate-200 focus:border-brand-500 outline-none"
+                >
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. MAIN PRODUCT CATALOG SECTION (DIRECT TO PRODUCTS) -->
+    <main id="products-section" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Category Header & Filters -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    Tech & Workspace Essentials
+                </h1>
+                <p class="text-sm text-slate-600 mt-1">
+                    Curated gear by <strong>dinh chien</strong> — Click on any item to check live availability on Amazon.
+                </p>
+            </div>
+            
+            <!-- Sort & Count -->
+            <div class="flex items-center gap-3 self-start md:self-auto">
+                <span id="productCountBadge" class="text-xs font-semibold text-slate-600 bg-slate-200/80 px-3 py-2 rounded-xl">
+                    Loading products...
+                </span>
+                <select id="sortSelect" onchange="renderProducts()" class="text-xs sm:text-sm font-medium bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-slate-700 outline-none focus:border-brand-500">
+                    <option value="featured">Sort by: Featured</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="name">Product Name (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar" id="categoryTabs">
+            <button onclick="setCategory('all')" data-cat="all" class="cat-btn active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm shadow-brand-600/20">
+                <i class="fa-solid fa-border-all mr-1.5"></i> All Products
+            </button>
+            <button onclick="setCategory('Keyboards & Mice')" data-cat="Keyboards & Mice" class="cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                <i class="fa-solid fa-keyboard mr-1.5"></i> Ergonomic Keyboards & Mice
+            </button>
+            <button onclick="setCategory('Audio & Conferencing')" data-cat="Audio & Conferencing" class="cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                <i class="fa-solid fa-headphones mr-1.5"></i> Audio & Conferencing
+            </button>
+            <button onclick="setCategory('Charging & Hubs')" data-cat="Charging & Hubs" class="cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                <i class="fa-solid fa-bolt mr-1.5"></i> GaN Chargers & USB-C Hubs
+            </button>
+            <button onclick="setCategory('Lighting & Desk Setup')" data-cat="Lighting & Desk Setup" class="cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                <i class="fa-solid fa-lightbulb mr-1.5"></i> Lighting & Desk Accessories
+            </button>
+            <button onclick="setCategory('Storage & Portable')" data-cat="Storage & Portable" class="cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                <i class="fa-solid fa-hard-drive mr-1.5"></i> Portable SSD & Storage
+            </button>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Products rendered via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-12 text-center my-6">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400 text-2xl mb-4">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">No matching products found</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Try adjusting your search keywords or selecting another category.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-600 text-white text-xs font-semibold rounded-xl hover:bg-brand-700 transition">
+                View All Products
+            </button>
+        </div>
+    </main>
+
+    <!-- 3. FOOTER & AMAZON POLICY COMPLIANCE -->
+    <footer id="compliance-policy" class="bg-slate-900 text-slate-400 pt-10 pb-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+                <!-- Col 1: Brand Info -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-layer-group text-sm"></i>
+                        </div>
+                        <span class="text-lg font-extrabold text-white">dinh <span class="text-brand-500">chien</span></span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed pr-4">
+                        Curated directory and recommendations for high-performance tech gear, ergonomic peripherals, and modern workspace accessories.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Categories -->
+                <div class="md:col-span-3 space-y-2">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Categories</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#products-section" onclick="setCategory('Keyboards & Mice')" class="hover:text-white transition">Ergonomic Keyboards & Mice</a></li>
+                        <li><a href="#products-section" onclick="setCategory('Charging & Hubs')" class="hover:text-white transition">GaN Chargers & USB-C Hubs</a></li>
+                        <li><a href="#products-section" onclick="setCategory('Audio & Conferencing')" class="hover:text-white transition">ANC Headphones & Webcams</a></li>
+                        <li><a href="#products-section" onclick="setCategory('Lighting & Desk Setup')" class="hover:text-white transition">Monitor Light Bars & Stands</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal & Amazon Associates Statement -->
+                <div class="md:col-span-4 space-y-2">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Amazon Associates Disclosure</h4>
+                    <div class="bg-slate-800/90 border border-slate-700 p-4 rounded-xl text-xs leading-relaxed text-slate-300 space-y-1.5">
+                        <p class="font-semibold text-white">
+                            "As an Amazon Associate I earn from qualifying purchases."
+                        </p>
+                        <p class="text-[11px] text-slate-400">
+                            <strong>dinh chien</strong> is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 <strong>dinh chien</strong>. All rights reserved.</p>
+                <div class="flex items-center gap-5">
+                    <button onclick="openPolicyModal('privacy')" class="hover:text-slate-300 transition">Privacy Policy</button>
+                    <button onclick="openPolicyModal('terms')" class="hover:text-slate-300 transition">Terms of Use</button>
+                    <button onclick="openPolicyModal('affiliate')" class="hover:text-slate-300 transition">Affiliate Disclosure</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================================= -->
+    <!-- ADMIN LOGIN MODAL (PASSWORD PROTECTED) -->
+    <!-- ======================================================================= -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200 animate-fadeIn">
+            <div class="flex items-center justify-between px-6 py-4 bg-slate-900 text-white">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-user-shield text-amber-400 text-lg"></i>
+                    <h3 class="text-sm font-bold">Admin Login - dinh chien</h3>
+                </div>
+                <button onclick="closeLoginModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="p-6 space-y-4">
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Only the administrator of <strong>dinh chien</strong> can add, edit, or remove products. All changes are saved to the cloud and visible to all visitors.
+                </p>
+                <div id="loginErrorBox" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs font-semibold text-red-600 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Invalid username or password!</span>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Username *</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="loginUsername" required placeholder="Enter username..." class="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 focus:bg-white border border-slate-300 rounded-xl outline-none focus:border-brand-600">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Password *</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-key absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="password" id="loginPassword" required placeholder="Enter password..." class="w-full pl-9 pr-3.5 py-2.5 text-sm bg-slate-50 focus:bg-white border border-slate-300 rounded-xl outline-none focus:border-brand-600">
+                    </div>
+                </div>
+                <div class="pt-2 flex items-center justify-end gap-2">
+                    <button type="button" onclick="closeLoginModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-100">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-md shadow-brand-600/20">
+                        <i class="fa-solid fa-right-to-bracket mr-1"></i> Unlock Manager
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODAL 1: PRODUCT QUICK VIEW & AMAZON REDIRECT -->
+    <!-- ======================================================================= -->
+    <div id="productDetailModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+                <span id="modalCategory" class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-lg">Category</span>
+                <button onclick="closeDetailModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="aspect-square rounded-xl bg-slate-100 overflow-hidden border border-slate-200">
+                    <img id="modalImage" src="" alt="" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x600/f1f5f9/334155?text=Product'">
+                </div>
+                <div class="space-y-4">
+                    <h3 id="modalTitle" class="text-lg font-extrabold text-slate-900 leading-snug"></h3>
+                    <div class="flex items-center gap-2 text-xs">
+                        <div id="modalStars" class="text-amber-400 flex items-center gap-0.5"></div>
+                        <span id="modalRatingText" class="text-slate-500 font-medium"></span>
+                    </div>
+                    <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed"></p>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">Key Highlights:</h4>
+                        <ul id="modalHighlights" class="list-disc list-inside text-xs text-slate-600 space-y-1"></ul>
+                    </div>
+                    <div class="pt-2">
+                        <a id="modalAmazonBtn" href="#" target="_blank" rel="nofollow sponsored noopener" class="w-full py-3 px-4 rounded-xl bg-amazon hover:bg-amazon-hover text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-all">
+                            <i class="fa-brands fa-amazon text-lg"></i>
+                            <span>Check Price on Amazon</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                        <p class="text-[11px] text-slate-400 text-center mt-2">
+                            Prices and availability are accurate as of the time of viewing on Amazon.com.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODAL 2: PRODUCT & AFFILIATE LINK MANAGER (ADMIN ONLY) -->
+    <!-- ======================================================================= -->
+    <div id="manageModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-200 my-8 flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-900 text-white">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-brands fa-amazon text-amazon text-xl"></i>
+                    <div>
+                        <h3 class="text-base font-bold">Product & Affiliate Link Manager (dinh chien)</h3>
+                        <p class="text-xs text-slate-400">Real-time Cloud Sync — Changes are saved permanently for all visitors</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="handleAdminLogout()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-red-600 text-xs font-semibold text-slate-200 hover:text-white transition" title="Lock Admin Panel">
+                        <i class="fa-solid fa-lock mr-1"></i> Lock Admin
+                    </button>
+                    <button onclick="closeManageModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-1">
+                
+                <!-- 1. Global Associate Tag & Admin Credentials -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-brand-50/70 border border-brand-200 rounded-xl p-4 flex flex-col justify-between gap-3">
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-brand-900 block">
+                                Your Amazon Associate Tag:
+                            </label>
+                            <p class="text-xs text-slate-600 mt-0.5">
+                                Automatically appended to all standard Amazon product links.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input 
+                                type="text" 
+                                id="associateTagInput" 
+                                placeholder="e.g. dinhchien-20" 
+                                class="px-3 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600 flex-1"
+                            >
+                            <button onclick="saveAssociateTag()" class="px-3.5 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition shrink-0">
+                                Save Tag
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between gap-3">
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-800 block">
+                                Update Admin Username & Password:
+                            </label>
+                            <p class="text-xs text-slate-500 mt-0.5">
+                                Default: User <code class="font-bold">dinhchien</code> / Pass <code class="font-bold">123456</code>
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="newAdminUser" placeholder="New username" class="px-2.5 py-2 text-xs bg-white border border-slate-300 rounded-lg outline-none w-1/2">
+                            <input type="password" id="newAdminPass" placeholder="New password" class="px-2.5 py-2 text-xs bg-white border border-slate-300 rounded-lg outline-none w-1/2">
+                            <button onclick="saveAdminCredentials()" class="px-3 py-2 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-lg transition shrink-0">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Add / Edit Product Form -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                    <h4 id="formHeading" class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-brand-600"></i>
+                        <span>Add New Amazon Product</span>
+                    </h4>
+                    <form id="productForm" onsubmit="handleSaveProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="hidden" id="editProductId">
+                        
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Product Title *</label>
+                            <input type="text" id="prodName" required placeholder="e.g. Logitech MX Master 3S Wireless Performance Mouse" class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Category *</label>
+                            <select id="prodCategory" required class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                                <option value="Keyboards & Mice">Ergonomic Keyboards & Mice</option>
+                                <option value="Audio & Conferencing">Audio & Conferencing</option>
+                                <option value="Charging & Hubs">GaN Chargers & USB-C Hubs</option>
+                                <option value="Lighting & Desk Setup">Lighting & Desk Accessories</option>
+                                <option value="Storage & Portable">Portable SSD & Storage</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Highlight Badge</label>
+                            <input type="text" id="prodBadge" placeholder="e.g. Best Seller / Editor's Pick" class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Amazon Affiliate Link (amzn.to shortlink or full Amazon URL) *</label>
+                            <input type="url" id="prodUrl" required placeholder="https://www.amazon.com/dp/B09HM94VDS?tag=dinhchien-20 or https://amzn.to/..." class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Product Image URL *</label>
+                            <input type="url" id="prodImage" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Rating (4.0 - 5.0)</label>
+                            <input type="number" step="0.1" min="1" max="5" id="prodRating" value="4.8" class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Short Description & Review *</label>
+                            <textarea id="prodDesc" rows="2" required placeholder="Explain why this product is essential for a productive workspace..." class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600"></textarea>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Key Features (Comma separated)</label>
+                            <input type="text" id="prodHighlights" placeholder="e.g. 8000 DPI Darkfield sensor, MagSpeed electromagnetic scrolling, USB-C quick charging" class="w-full px-3.5 py-2 text-sm bg-white border border-slate-300 rounded-lg outline-none focus:border-brand-600">
+                        </div>
+
+                        <div class="sm:col-span-2 flex items-center justify-end gap-2 pt-2">
+                            <button type="button" onclick="resetProductForm()" class="px-4 py-2 rounded-lg border border-slate-300 text-slate-600 text-xs font-semibold hover:bg-slate-100">
+                                Clear / Cancel
+                            </button>
+                            <button type="submit" class="px-5 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-sm">
+                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 3. Current Product List -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-sm font-bold text-slate-900">Current Products (<span id="adminTotalCount">10</span> items)</h4>
+                        <button onclick="restoreDefaultProducts()" class="text-xs text-slate-500 hover:text-red-600 underline">
+                            Restore 10 default products
+                        </button>
+                    </div>
+                    <div id="manageProductList" class="space-y-2 max-h-64 overflow-y-auto pr-1">
+                        <!-- Rendered via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODAL 3: POLICIES & DISCLOSURES (AMAZON COMPLIANCE) -->
+    <!-- ======================================================================= -->
+    <div id="policyModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 id="policyTitle" class="text-lg font-bold text-slate-900">Policy</h3>
+                <button onclick="closePolicyModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="policyContent" class="text-sm text-slate-600 space-y-3 leading-relaxed max-h-96 overflow-y-auto pr-2"></div>
+            <div class="pt-2 text-right">
+                <button onclick="closePolicyModal()" class="px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg border border-slate-700 text-xs font-medium flex items-center gap-2.5">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMsg">Changes saved!</span>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- JAVASCRIPT & FIREBASE CLOUD STORAGE LOGIC -->
+    <!-- ======================================================================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // 10 Default Products in English (Tech & Workspace Essentials)
+        const defaultProducts = [
+            {
+                id: 'prod-1',
+                name: 'Logitech MX Master 3S Wireless Performance Mouse',
+                category: 'Keyboards & Mice',
+                badge: "Editor's Choice",
+                rating: 4.8,
+                reviewsCount: '14,200+',
+                image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Logitech+MX+Master+3S&tag=dinhchien-20',
+                description: 'The ultimate productivity mouse featuring Quiet Click tactile switches, ultra-fast MagSpeed electromagnetic scrolling (1,000 lines per second), and an 8000 DPI track-on-glass sensor.',
+                highlights: [
+                    'Ergonomic sculpted silhouette supports palm and wrist',
+                    'Pair with up to 3 devices across macOS, Windows, and iPadOS',
+                    '8K DPI optical sensor tracks accurately on virtually any surface including glass'
+                ]
+            },
+            {
+                id: 'prod-2',
+                name: 'Keychron K3 Pro Ultra-Slim QMK/VIA Wireless Mechanical Keyboard',
+                category: 'Keyboards & Mice',
+                badge: 'Best Seller',
+                rating: 4.7,
+                reviewsCount: '3,850+',
+                image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Keychron+K3+Pro&tag=dinhchien-20',
+                description: 'An ultra-slim 75% layout wireless mechanical keyboard featuring full QMK/VIA programmability, low-profile Gateron switches, and seamless compatibility for both Mac and Windows.',
+                highlights: [
+                    'Low-profile mechanical switches for ergonomic, responsive typing',
+                    'Double-shot PBT keycaps resistant to oil and shine',
+                    'Connect via Bluetooth 5.1 or wired USB Type-C'
+                ]
+            },
+            {
+                id: 'prod-3',
+                name: 'Anker Prime 100W GaN Wall Charger (3-Port Fast Compact Charger)',
+                category: 'Charging & Hubs',
+                badge: 'Must-Have Gear',
+                rating: 4.9,
+                reviewsCount: '6,120+',
+                image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Anker+Prime+100W+GaN+Charger&tag=dinhchien-20',
+                description: 'Next-generation ultra-compact GaN wall charger equipped with 2 USB-C ports and 1 USB-A port, delivering up to 100W to fast-charge your MacBook Pro, iPad, and iPhone simultaneously.',
+                highlights: [
+                    '100W max output powers laptops and tablets at full speed',
+                    'Foldable prongs for effortless travel and everyday carry',
+                    'ActiveShield 2.0 technology monitors temperature for safe charging'
+                ]
+            },
+            {
+                id: 'prod-4',
+                name: 'BenQ ScreenBar Halo LED Monitor Light Bar with Wireless Controller',
+                category: 'Lighting & Desk Setup',
+                badge: 'Eye-Care Pick',
+                rating: 4.8,
+                reviewsCount: '4,500+',
+                image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=BenQ+ScreenBar+Halo&tag=dinhchien-20',
+                description: 'Intelligent asymmetrical optical monitor light bar that illuminates your workspace and keyboard with zero reflective glare on your screen, complete with an ambient rear backlight.',
+                highlights: [
+                    'Precision wireless desktop dial for brightness and color temperature',
+                    'Built-in ambient light sensor for automatic 500-lux dimming',
+                    'Front and rear lighting modes reduce eye strain during late-night work'
+                ]
+            },
+            {
+                id: 'prod-5',
+                name: 'Sony WH-1000XM5 Wireless Noise Canceling Headphones',
+                category: 'Audio & Conferencing',
+                badge: 'Top ANC',
+                rating: 4.7,
+                reviewsCount: '19,400+',
+                image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Sony+WH-1000XM5&tag=dinhchien-20',
+                description: 'Create an instant zone of deep focus in open offices or coffee shops with 8 noise-canceling microphones and crystal-clear AI-powered voice pickup for Zoom and Teams calls.',
+                highlights: [
+                    'Industry-leading Active Noise Cancellation with Auto NC Optimizer',
+                    'Up to 30 hours of battery life with quick charging support',
+                    'Ultra-lightweight soft fit leather earcups for all-day comfort'
+                ]
+            },
+            {
+                id: 'prod-6',
+                name: 'Anker 575 USB-C Docking Station (13-in-1 Triple Display Hub)',
+                category: 'Charging & Hubs',
+                badge: 'All-in-One Hub',
+                rating: 4.6,
+                reviewsCount: '2,980+',
+                image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Anker+575+USB-C+Docking+Station&tag=dinhchien-20',
+                description: 'Transform a single laptop USB-C port into 13 versatile connections, supporting triple external monitors, 85W laptop pass-through charging, Gigabit Ethernet, and SD card slots.',
+                highlights: [
+                    'Single-cable desktop workstation connectivity for laptops',
+                    'Supports multi-monitor setups up to 4K resolution',
+                    'Simultaneous 85W host charging and 18W Power Delivery for phones'
+                ]
+            },
+            {
+                id: 'prod-7',
+                name: 'Samsung T7 Shield 2TB Portable SSD (USB 3.2 Gen 2 Rugged External Drive)',
+                category: 'Storage & Portable',
+                badge: 'Rugged & Fast',
+                rating: 4.9,
+                reviewsCount: '11,300+',
+                image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Samsung+T7+Shield+2TB&tag=dinhchien-20',
+                description: 'Blazing-fast external solid state drive delivering read/write speeds up to 1,050 MB/s with IP65 water and dust resistance and a rubberized exterior for high-volume creative workflows.',
+                highlights: [
+                    'Transfer massive 4K video files and project backups in seconds',
+                    'IP65 rated for water/dust resistance and drop protection up to 9.8ft',
+                    'Pocket-sized form factor compatible with Mac, PC, and Android'
+                ]
+            },
+            {
+                id: 'prod-8',
+                name: 'Twelve South BookArc Vertical Desktop Aluminum Stand for Laptops',
+                category: 'Lighting & Desk Setup',
+                badge: 'Space Saver',
+                rating: 4.8,
+                reviewsCount: '5,400+',
+                image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Twelve+South+BookArc+Laptop+Stand&tag=dinhchien-20',
+                description: 'Sleek anodized aluminum vertical laptop dock designed for closed-clamshell desktop setups, reclaiming up to 70% of your desk surface while improving airflow.',
+                highlights: [
+                    'CNC-machined aluminum complements MacBooks and Ultrabooks',
+                    'Soft silicone slot inserts protect your laptop from scratches',
+                    'Integrated cable catch keeps power and display cords tidy'
+                ]
+            },
+            {
+                id: 'prod-9',
+                name: 'Logitech Brio 4K Ultra HD Pro Business Webcam with HDR',
+                category: 'Audio & Conferencing',
+                badge: '4K Ultra HD',
+                rating: 4.7,
+                reviewsCount: '9,850+',
+                image: 'https://images.unsplash.com/photo-1587826080692-f439cd0b70da?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Logitech+Brio+4K+Webcam&tag=dinhchien-20',
+                description: 'Flagship 4K Ultra HD webcam engineered with RightLight 3 auto-HDR light correction and dual omnidirectional noise-canceling mics for studio-quality video conferences.',
+                highlights: [
+                    'Crisp 4K UHD resolution with 5x HD digital zoom',
+                    'Infrared sensors support instant Windows Hello facial login',
+                    'Includes attachable privacy shutter for peace of mind'
+                ]
+            },
+            {
+                id: 'prod-10',
+                name: 'Ergotron LX Single Monitor Arm Desk Mount (Up to 34-Inch Displays)',
+                category: 'Lighting & Desk Setup',
+                badge: 'Pro Ergonomics',
+                rating: 4.9,
+                reviewsCount: '7,600+',
+                image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=700&q=80',
+                amazonUrl: 'https://www.amazon.com/s?k=Ergotron+LX+Monitor+Arm&tag=dinhchien-20',
+                description: 'Commercial-grade ergonomic monitor arm featuring patented Constant Force lift-and-pivot technology, effortlessly floating displays up to 34 inches at ideal eye level.',
+                highlights: [
+                    'Holds monitors up to 25 lbs (11.3 kg) with VESA compatibility',
+                    '360-degree screen rotation and integrated under-arm cable management',
+                    'Frees up valuable desk space directly beneath your monitor'
+                ]
+            }
+        ];
+
+        // App State
+        let products = [...defaultProducts];
+        let currentCategory = 'all';
+        let associateTag = 'dinhchien-20';
+        let adminUser = 'dinhchien';
+        let adminPass = '123456';
+        let isAdminAuthenticated = false;
+
+        // Firebase variables
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'dinhchien-tech-store';
+
+        // Map legacy Vietnamese categories to English automatically if loaded from cloud
+        const categoryTranslationMap = {
+            'Phím & Chuột': 'Keyboards & Mice',
+            'Âm Thanh & Họp Online': 'Audio & Conferencing',
+            'Sạc & Hub Kết Nối': 'Charging & Hubs',
+            'Đèn & Phụ Kiện Bàn': 'Lighting & Desk Setup',
+            'Lưu Trữ & Di Động': 'Storage & Portable'
+        };
+
+        // Normalize loaded products to English if default Vietnamese items were stored previously
+        function normalizeProductsLanguage(loadedList) {
+            if (!Array.isArray(loadedList)) return [...defaultProducts];
+            return loadedList.map(item => {
+                // If this is one of the 10 default IDs and still has Vietnamese category, upgrade to English default
+                const matchedDefault = defaultProducts.find(d => d.id === item.id);
+                if (matchedDefault && categoryTranslationMap[item.category]) {
+                    return {
+                        ...matchedDefault,
+                        amazonUrl: item.amazonUrl || matchedDefault.amazonUrl,
+                        image: item.image || matchedDefault.image
+                    };
+                }
+                return {
+                    ...item,
+                    category: categoryTranslationMap[item.category] || item.category
+                };
+            });
+        }
+
+        // Sync catalog to Cloud Firestore so all visitors see updates
+        async function syncCatalogToCloud() {
+            if (!db || !currentUser) return;
+            try {
+                const catalogRef = doc(db, 'artifacts', appId, 'public', 'data', 'store_catalog', 'main');
+                await setDoc(catalogRef, {
+                    productsJson: JSON.stringify(products),
+                    associateTag: associateTag,
+                    adminUser: adminUser,
+                    adminPass: adminPass,
+                    updatedAt: Date.now()
+                });
+            } catch (err) {
+                console.error('Cloud sync error:', err);
+            }
+        }
+
+        // Initialize Firebase & Real-time Listener
+        async function initCloudStorage() {
+            try {
+                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    currentUser = auth.currentUser;
+
+                    if (currentUser) {
+                        const catalogRef = doc(db, 'artifacts', appId, 'public', 'data', 'store_catalog', 'main');
+                        onSnapshot(catalogRef, async (snap) => {
+                            if (snap.exists()) {
+                                const data = snap.data();
+                                if (data.productsJson) {
+                                    try {
+                                        const parsed = JSON.parse(data.productsJson);
+                                        products = normalizeProductsLanguage(parsed);
+                                    } catch (e) {
+                                        products = [...defaultProducts];
+                                    }
+                                }
+                                if (data.associateTag !== undefined) {
+                                    associateTag = data.associateTag;
+                                    const tagInput = document.getElementById('associateTagInput');
+                                    if (tagInput) tagInput.value = associateTag;
+                                }
+                                if (data.adminUser) adminUser = data.adminUser;
+                                if (data.adminPass) adminPass = data.adminPass;
+
+                                renderProducts();
+                                if (!document.getElementById('manageModal').classList.contains('hidden')) {
+                                    renderManageProductList();
+                                }
+                            } else {
+                                await syncCatalogToCloud();
+                                renderProducts();
+                            }
+                        }, (error) => {
+                            console.error("Firestore listener error:", error);
+                            renderProducts();
+                        });
+                    }
+                } else {
+                    renderProducts();
+                }
+            } catch (e) {
+                console.error("Cloud connection fallback:", e);
+                renderProducts();
+            }
+        }
+
+        // Initialize App UI
+        function initApp() {
+            document.getElementById('associateTagInput').value = associateTag;
+            renderProducts();
+            initCloudStorage();
+
+            // Search Listeners
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                document.getElementById('searchInputMobile').value = e.target.value;
+                renderProducts();
+            });
+            document.getElementById('searchInputMobile').addEventListener('input', (e) => {
+                document.getElementById('searchInput').value = e.target.value;
+                renderProducts();
+            });
+        }
+
+        // Format Amazon Affiliate Link with Associate Tag
+        function formatAmazonAffiliateUrl(rawUrl) {
+            if (!rawUrl) return '#';
+            try {
+                if (rawUrl.includes('amzn.to')) return rawUrl;
+                const urlObj = new URL(rawUrl);
+                if (urlObj.hostname.includes('amazon.') && associateTag) {
+                    urlObj.searchParams.set('tag', associateTag.trim());
+                    return urlObj.toString();
+                }
+                return rawUrl;
+            } catch (e) {
+                return rawUrl;
+            }
+        }
+
+        // Render Star Icons
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5;
+            let html = '';
+            for (let i = 0; i < fullStars; i++) {
+                html += '<i class="fa-solid fa-star"></i>';
+            }
+            if (halfStar) {
+                html += '<i class="fa-solid fa-star-half-stroke"></i>';
+            }
+            return html;
+        }
+
+        // Filter & Render Product Catalog
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptyState');
+            const countBadge = document.getElementById('productCountBadge');
+            const searchQuery = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+            const sortBy = document.getElementById('sortSelect').value;
+
+            let filtered = products.filter(p => {
+                const matchCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = !searchQuery || 
+                    p.name.toLowerCase().includes(searchQuery) || 
+                    p.description.toLowerCase().includes(searchQuery) ||
+                    p.category.toLowerCase().includes(searchQuery);
+                return matchCat && matchSearch;
+            });
+
+            if (sortBy === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if (sortBy === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            countBadge.textContent = `Showing ${filtered.length} product${filtered.length === 1 ? '' : 's'}`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(prod => {
+                const finalAffiliateLink = formatAmazonAffiliateUrl(prod.amazonUrl);
+                return `
+                <article class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden flex flex-col card-hover group">
+                    <!-- Image Container (Direct Amazon Redirect) -->
+                    <a href="${finalAffiliateLink}" target="_blank" rel="nofollow sponsored noopener" class="relative aspect-[4/3] bg-slate-100 overflow-hidden block">
+                        <img 
+                            src="${prod.image}" 
+                            alt="${prod.name}" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onerror="this.src='https://placehold.co/600x450/f1f5f9/334155?text=Tech+Accessory'"
+                        >
+                        ${prod.badge ? `
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-900/90 backdrop-blur-sm text-white text-[11px] font-bold tracking-wide">
+                            ${prod.badge}
+                        </span>
+                        ` : ''}
+                        <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-sm text-slate-800 text-xs font-bold shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-star text-amber-400"></i> ${prod.rating}
+                        </span>
+                    </a>
+
+                    <!-- Content -->
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-brand-600">
+                                ${prod.category}
+                            </div>
+                            <a href="${finalAffiliateLink}" target="_blank" rel="nofollow sponsored noopener" class="block font-bold text-slate-900 text-base leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors">
+                                ${prod.name}
+                            </a>
+                            <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                                ${prod.description}
+                            </p>
+                        </div>
+
+                        <div class="pt-2 space-y-2 border-t border-slate-100">
+                            <!-- Direct Amazon CTA Button -->
+                            <a 
+                                href="${finalAffiliateLink}" 
+                                target="_blank" 
+                                rel="nofollow sponsored noopener"
+                                class="w-full py-2.5 px-4 rounded-xl bg-amazon hover:bg-amazon-hover text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all"
+                            >
+                                <i class="fa-brands fa-amazon text-base"></i>
+                                <span>Check Price on Amazon</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                            </a>
+
+                            <button 
+                                onclick="openDetailModal('${prod.id}')" 
+                                class="w-full py-2 px-3 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-600 font-semibold text-xs transition-colors"
+                            >
+                                View Key Features
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                `;
+            }).join('');
+        }
+
+        // Category Filter
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = 'cat-btn active shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm shadow-brand-600/20';
+                } else {
+                    btn.className = 'cat-btn shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200';
+                }
+            });
+            renderProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchInputMobile').value = '';
+            setCategory('all');
+        }
+
+        // Product Quick View Modal
+        function openDetailModal(id) {
+            const prod = products.find(p => p.id === id);
+            if (!prod) return;
+
+            document.getElementById('modalCategory').textContent = prod.category;
+            document.getElementById('modalImage').src = prod.image;
+            document.getElementById('modalImage').alt = prod.name;
+            document.getElementById('modalTitle').textContent = prod.name;
+            document.getElementById('modalDesc').textContent = prod.description;
+            document.getElementById('modalStars').innerHTML = renderStars(prod.rating);
+            document.getElementById('modalRatingText').textContent = `${prod.rating}/5.0 (${prod.reviewsCount || '1,000+'} global ratings on Amazon)`;
+            
+            const highlightsList = document.getElementById('modalHighlights');
+            const items = Array.isArray(prod.highlights) && prod.highlights.length > 0 
+                ? prod.highlights 
+                : ['Authentic product fulfilled via Amazon', 'Verified build quality and workspace ergonomics', 'Backed by Amazon customer support and return policy'];
+            highlightsList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+
+            document.getElementById('modalAmazonBtn').href = formatAmazonAffiliateUrl(prod.amazonUrl);
+            document.getElementById('productDetailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('productDetailModal').classList.add('hidden');
+        }
+
+        // =========================================================================
+        // ADMIN AUTHENTICATION (USERNAME & PASSWORD)
+        // =========================================================================
+        function handleAdminAccess() {
+            if (isAdminAuthenticated) {
+                openManageModal();
+            } else {
+                document.getElementById('loginErrorBox').classList.add('hidden');
+                document.getElementById('loginUsername').value = '';
+                document.getElementById('loginPassword').value = '';
+                document.getElementById('loginModal').classList.remove('hidden');
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUsername').value.trim();
+            const p = document.getElementById('loginPassword').value.trim();
+
+            if (u === adminUser && p === adminPass) {
+                isAdminAuthenticated = true;
+                document.getElementById('adminLockIcon').className = 'fa-solid fa-unlock text-emerald-400';
+                closeLoginModal();
+                openManageModal();
+                showToast('Admin login successful!');
+            } else {
+                document.getElementById('loginErrorBox').classList.remove('hidden');
+            }
+        }
+
+        function handleAdminLogout() {
+            isAdminAuthenticated = false;
+            document.getElementById('adminLockIcon').className = 'fa-solid fa-lock text-amber-400';
+            closeManageModal();
+            showToast('Admin panel locked!');
+        }
+
+        async function saveAdminCredentials() {
+            const newU = document.getElementById('newAdminUser').value.trim();
+            const newP = document.getElementById('newAdminPass').value.trim();
+            if (!newU || !newP) {
+                showToast('Please enter both a new username and password!');
+                return;
+            }
+            adminUser = newU;
+            adminPass = newP;
+            document.getElementById('newAdminUser').value = '';
+            document.getElementById('newAdminPass').value = '';
+            await syncCatalogToCloud();
+            showToast('Admin credentials updated and synced!');
+        }
+
+        // =========================================================================
+        // PRODUCT & AFFILIATE LINK MANAGEMENT (CLOUD SYNCED)
+        // =========================================================================
+        function openManageModal() {
+            renderManageProductList();
+            document.getElementById('manageModal').classList.remove('hidden');
+        }
+
+        function closeManageModal() {
+            document.getElementById('manageModal').classList.add('hidden');
+        }
+
+        async function saveAssociateTag() {
+            const val = document.getElementById('associateTagInput').value.trim();
+            associateTag = val;
+            renderProducts();
+            await syncCatalogToCloud();
+            showToast(`Saved Amazon Associate Tag: ${associateTag || 'Default'}`);
+        }
+
+        function renderManageProductList() {
+            const listEl = document.getElementById('manageProductList');
+            const totalEl = document.getElementById('adminTotalCount');
+            if (totalEl) totalEl.textContent = products.length;
+
+            listEl.innerHTML = products.map(p => `
+                <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img src="${p.image}" alt="" class="w-11 h-11 rounded-lg object-cover bg-white border border-slate-200 shrink-0" onerror="this.src='https://placehold.co/100x100?text=IMG'">
+                        <div class="min-w-0">
+                            <h5 class="text-xs font-bold text-slate-900 truncate">${p.name}</h5>
+                            <p class="text-[11px] text-slate-500 truncate">${p.category} • <span class="text-brand-600">${p.amazonUrl}</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="editProduct('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-brand-500 text-slate-700 text-xs font-semibold" title="Edit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button onclick="deleteProduct('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-red-500 text-red-600 text-xs font-semibold" title="Delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function handleSaveProduct(e) {
+            e.preventDefault();
+            if (!isAdminAuthenticated) return;
+
+            const editId = document.getElementById('editProductId').value;
+            const name = document.getElementById('prodName').value.trim();
+            const category = document.getElementById('prodCategory').value;
+            const badge = document.getElementById('prodBadge').value.trim();
+            const amazonUrl = document.getElementById('prodUrl').value.trim();
+            const image = document.getElementById('prodImage').value.trim();
+            const rating = parseFloat(document.getElementById('prodRating').value) || 4.8;
+            const description = document.getElementById('prodDesc').value.trim();
+            const highlightsRaw = document.getElementById('prodHighlights').value.trim();
+            const highlights = highlightsRaw ? highlightsRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+            if (editId) {
+                const idx = products.findIndex(p => p.id === editId);
+                if (idx > -1) {
+                    products[idx] = { ...products[idx], name, category, badge, amazonUrl, image, rating, description, highlights };
+                }
+                showToast('Product updated and synced to cloud!');
+            } else {
+                const newProd = {
+                    id: 'prod-' + Date.now(),
+                    name,
+                    category,
+                    badge: badge || 'Recommended',
+                    rating,
+                    reviewsCount: '1,200+',
+                    image,
+                    amazonUrl,
+                    description,
+                    highlights
+                };
+                products.unshift(newProd);
+                showToast('New product added and saved permanently!');
+            }
+
+            resetProductForm();
+            renderManageProductList();
+            renderProducts();
+            await syncCatalogToCloud();
+        }
+
+        function editProduct(id) {
+            const prod = products.find(p => p.id === id);
+            if (!prod) return;
+
+            document.getElementById('formHeading').innerHTML = `<i class="fa-solid fa-pen text-brand-600"></i> <span>Edit Product</span>`;
+            document.getElementById('editProductId').value = prod.id;
+            document.getElementById('prodName').value = prod.name;
+            document.getElementById('prodCategory').value = prod.category;
+            document.getElementById('prodBadge').value = prod.badge || '';
+            document.getElementById('prodUrl').value = prod.amazonUrl;
+            document.getElementById('prodImage').value = prod.image;
+            document.getElementById('prodRating').value = prod.rating;
+            document.getElementById('prodDesc').value = prod.description;
+            document.getElementById('prodHighlights').value = Array.isArray(prod.highlights) ? prod.highlights.join(', ') : '';
+        }
+
+        async function deleteProduct(id) {
+            if (!isAdminAuthenticated) return;
+            products = products.filter(p => p.id !== id);
+            renderManageProductList();
+            renderProducts();
+            await syncCatalogToCloud();
+            showToast('Product removed and synced!');
+        }
+
+        function resetProductForm() {
+            document.getElementById('formHeading').innerHTML = `<i class="fa-solid fa-plus-circle text-brand-600"></i> <span>Add New Amazon Product</span>`;
+            document.getElementById('editProductId').value = '';
+            document.getElementById('productForm').reset();
+        }
+
+        async function restoreDefaultProducts() {
+            if (!isAdminAuthenticated) return;
+            products = [...defaultProducts];
+            renderManageProductList();
+            renderProducts();
+            await syncCatalogToCloud();
+            showToast('Restored 10 default products in English!');
+        }
+
+        // =========================================================================
+        // POLICY MODAL (PRIVACY / TERMS / AFFILIATE DISCLOSURE)
+        // =========================================================================
+        function openPolicyModal(type) {
+            const titleEl = document.getElementById('policyTitle');
+            const contentEl = document.getElementById('policyContent');
+
+            if (type === 'privacy') {
+                titleEl.textContent = 'Privacy Policy - dinh chien';
+                contentEl.innerHTML = `
+                    <p>At <strong>dinh chien</strong>, we respect the privacy of our visitors. This website does not collect personally identifiable information unless voluntarily provided.</p>
+                    <p><strong>Cookies & Third-Party Links:</strong> When you click on product links that direct you to Amazon.com, Amazon may place cookies on your browser to track qualifying referral sessions in accordance with the Amazon Associates Operating Agreement.</p>
+                `;
+            } else if (type === 'terms') {
+                titleEl.textContent = 'Terms of Use - dinh chien';
+                contentEl.innerHTML = `
+                    <p>All content provided on <strong>dinh chien</strong> is for informational and product curation purposes within the Tech & Workspace Accessories niche.</p>
+                    <p>All transactions, payments, shipping, and customer support are handled directly by <strong>Amazon.com</strong> or its respective merchants. Always verify final specifications and live pricing on Amazon prior to completing your purchase.</p>
+                `;
+            } else {
+                titleEl.textContent = 'Amazon Affiliate Disclosure';
+                contentEl.innerHTML = `
+                    <p><strong>Official Statement:</strong> "As an Amazon Associate I earn from qualifying purchases."</p>
+                    <p><strong>dinh chien</strong> participates in the Amazon Services LLC Associates Program. When you click on links to various merchants on this site and make a purchase, this can result in this site earning a commission at <strong>no additional cost to you</strong>.</p>
+                `;
+            }
+
+            document.getElementById('policyModal').classList.remove('hidden');
+        }
+
+        function closePolicyModal() {
+            document.getElementById('policyModal').classList.add('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+
+        // Expose functions to global window scope
+        Object.assign(window, {
+            renderProducts,
+            setCategory,
+            resetFilters,
+            openDetailModal,
+            closeDetailModal,
+            handleAdminAccess,
+            closeLoginModal,
+            handleAdminLogin,
+            handleAdminLogout,
+            saveAdminCredentials,
+            openManageModal,
+            closeManageModal,
+            saveAssociateTag,
+            handleSaveProduct,
+            editProduct,
+            deleteProduct,
+            resetProductForm,
+            restoreDefaultProducts,
+            openPolicyModal,
+            closePolicyModal
+        });
+
+        // Close modal when clicking backdrop
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'productDetailModal') closeDetailModal();
+            if (e.target.id === 'manageModal') closeManageModal();
+            if (e.target.id === 'policyModal') closePolicyModal();
+            if (e.target.id === 'loginModal') closeLoginModal();
+        });
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
